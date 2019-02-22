@@ -2,8 +2,8 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-from database import Database
-from weather import Weather
+#from database import Database
+#from weather import Weather
 
 app = FastAPI()
 
@@ -22,17 +22,14 @@ def read_item(city_id: int):
 
 @app.post("/create")
 def create_item(city: City):
-	try
-		city_dict = {}
-		city_dict['key'] = len(Database.read) + 1
-		city_dict['name'] = city.name
-		city_dict['country_code'] = city.country_code
+	#city_dict = {}
+	#city_dict['key'] = len(Database.read) + 1
+	#city_dict['name'] = city.name
+	#city_dict['country_code'] = city.country_code
 
-		Database.insert(city_dict)
+	#Database.insert(city_dict)
 
-		return {"success": "true"}
-	except 
-    	return {"success": "false"}
+	return {"success": "true"}
 
 @app.get("/cities")
 def list_cities() :
@@ -45,9 +42,3 @@ def validade_city(city_name:str, country_code: str ):
 
 	if response.status_code != 200:
 		return False
-
-def forecast(city_id) :
-	content_file = open_database_file()
-
-def read_database():
-	return json.load(file.read())
